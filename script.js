@@ -291,3 +291,88 @@ if (logoutBtn) {
 
 // === INIȚIALIZARE ===
 generateCalendar(currentDate);
+
+// Export calendar
+document.getElementById("exportBtn").onclick = () => {
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  loadSelectionsFromDB(user, year, month).then(selections => {
+    const data = { user, year, month, selections };
+    const blob = new Blob([JSON.stringify(data)], {type: "application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `calendar_${user}_${year}_${month+1}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+};
+
+// Import calendar
+document.getElementById("importBtn").onclick = () => {
+  document.getElementById("importInput").click();
+};
+document.getElementById("importInput").onchange = e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = evt => {
+    try {
+      const data = JSON.parse(evt.target.result);
+      if (data.user === user && data.year === currentDate.getFullYear() && data.month === currentDate.getMonth()) {
+        saveSelectionsToDB(user, data.year, data.month, data.selections).then(() => generateCalendar(currentDate));
+      } else {
+        alert("Fișierul nu corespunde lunii sau utilizatorului curent!");
+      }
+    } catch {
+      alert("Fișier invalid!");
+    }
+  };
+  reader.readAsText(file);
+};
+
+// Resetare lună
+document.getElementById("resetBtn").onclick = () => {
+  if (confirm("Resetezi toate selecțiile pentru această lună?")) {
+    saveSelectionsToDB(user, currentDate.getFullYear(), currentDate.getMonth(), []).then(() => generateCalendar(currentDate));
+  }
+};
+
+// Toate Office/Home
+document.getElementById("bulkOfficeBtn").onclick = () => {
+  const days = document.querySelectorAll("#calendarGrid .day select:not(:disabled)");
+  const selections = Array.from(days).map(() => "office");
+  saveSelectionsToDB(user, currentDate.getFullYear(), currentDate.getMonth(), selections).then(() => generateCalendar(currentDate));
+};
+document.getElementById("bulkHomeBtn").onclick = () => {
+  const days = document.querySelectorAll("#calendarGrid .day select:not(:disabled)");
+  const selections = Array.from(days).map(() => "home");
+  saveSelectionsToDB(user, currentDate.getFullYear(), currentDate.getMonth(), selections).then(() => generateCalendar(currentDate));
+};
+
+// === SĂRBĂTORI PERSONALIZATE ===
+let customHolidays = JSON.parse(localStorage.getItem("customHolidays") || "{}");
+
+function renderCustomHolidays() {
+  const list = document.getElementById("customHolidaysList");
+  list.innerHTML = Object.entries(customHolidays)
+    .map(([date, name]) => `<div>${date}: ${name} <button onclick="removeHoliday('${date}')">Șterge</button></div>`)
+    .join("");
+}
+window.removeHoliday = function(date) {
+  delete customHolidays[date];
+  localStorage.setItem("customHolidays", JSON.stringify(customHolidays));
+  renderCustomHolidays();
+  generateCalendar(currentDate);
+};
+document.getElementById("addHolidayBtn").onclick = () => {
+  const date = document.getElementById("holidayDate").value;
+  const name = document.getElementById("holidayName").value;
+  if (date && name) {
+    customHolidays[date] = name;
+    localStorage.setItem("customHolidays", JSON.stringify(customHolidays));
+    renderCustomHolidays();
+    generateCalendar(currentDate);
+  }
+};
+renderCustomHolidays();
