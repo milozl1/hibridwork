@@ -121,6 +121,14 @@ body.dark-mode button:hover {
   text-align: center;
 }
 
+body.dark-mode .calendar-grid > div {
+  color: #fff !important;
+  font-weight: 700 !important;
+  background: #23283a !important;
+  border-bottom: 2px solid #6366f1 !important;
+  text-shadow: 0 1px 6px #000a;
+}
+
 /* Zile dezactivate */
 .day.disabled,
 .day select:disabled {
@@ -328,7 +336,7 @@ body.dark-mode .day input {
 }
 
 body.dark-mode .day.disabled,
-body.dark-mode .day select:disabled {
+body.dark_mode .day select:disabled {
   background: #181f2a;
   color: #6b7280;
   border-color: #181f2a;
@@ -896,4 +904,47 @@ body.dark-mode #calendarGrid .day .teamDiv span[title]:hover {
 }
 body.dark-mode .sidebar-title {
   color: #ffb300;
+}
+
+/* Vizibilitate popup colegi */
+#dayUsersPopup {
+  color: #23283a !important;
+  background: #fff !important;
+  box-shadow: 0 4px 18px #0002;
+}
+#dayUsersPopup ul li {
+  color: #23283a !important;
+  font-weight: 500;
+}
+#dayUsersPopup b {
+  color: #23283a !important;
+}
+#dayUsersPopup button {
+  color: #23283a !important;
+}
+
+/* Header zile săptămână calendar - contrast crescut */
+.calendar-grid > div {
+  color: #23283a;
+  font-weight: bold;
+  background: #e8f0fe;
+}
+body.dark-mode .calendar-grid > div {
+  color: #fff !important;
+  font-weight: 700 !important;
+  background: #23283a !important;
+  border-bottom: 2px solid #6366f1 !important;
+  text-shadow: 0 1px 6px #000a;
+}
+
+/* Asigură contrast și pe dark mode pentru popup */
+body.dark-mode #dayUsersPopup {
+  color: #fff !important;
+  background: #23283a !important;
+  box-shadow: 0 4px 18px #0008;
+}
+body.dark-mode #dayUsersPopup ul li,
+body.dark-mode #dayUsersPopup b,
+body.dark-mode #dayUsersPopup button {
+  color: #fff !important;
 }
