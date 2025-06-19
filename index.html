@@ -6,75 +6,67 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <div id="calendarHeader">
-      <button id="toggleThemeBtn">Comută temă întunecată</button>
-      <button id="prevBtn">← Luna Anterioară</button>
-      <h2 id="monthTitle"></h2>
-      <button id="nextBtn">Luna Următoare →</button>
-      <button id="toggleWeekViewBtn">Vizualizare săptămânală</button>
+    <div class="container">
+      <header id="mainHeader">
+        <div class="header-row">
+          <button id="toggleThemeBtn" class="icon-btn" title="Comută temă întunecată"><span class="material-icons">dark_mode</span></button>
+          <button id="prevBtn" class="nav-btn" title="Luna anterioară"><span class="material-icons">chevron_left</span></button>
+          <h2 id="monthTitle"></h2>
+          <button id="nextBtn" class="nav-btn" title="Luna următoare"><span class="material-icons">chevron_right</span></button>
+          <button id="langBtn" class="icon-btn" title="Change language" style="margin-left:12px;"></button>
+        </div>
+      </header>
+      <main class="main-content">
+        <aside class="sidebar">
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Vizualizare</h3>
+            <button id="toggleTeamViewBtn" class="icon-btn" title="Comută vizualizare echipă/personală" aria-label="Comută vizualizare echipă/personală" style="margin-bottom:18px;"><span class="material-icons" id="teamViewIcon">groups</span></button>
+          </div>
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Sărbători personalizate</h3>
+            <div class="section-card">
+              <input type="date" id="holidayDate">
+              <input type="text" id="holidayName" placeholder="Nume sărbătoare">
+              <button id="addHolidayBtn" title="Adaugă sărbătoare"><span class="material-icons">add</span></button>
+              <div id="customHolidaysList"></div>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Filtrare calendar</h3>
+            <div class="section-card">
+              <select id="filterType">
+                <option value="">Toate tipurile</option>
+                <option value="office">Office</option>
+                <option value="home">Home</option>
+                <option value="vacation">Vacanță</option>
+              </select>
+              <input id="filterUser" type="text" placeholder="Filtru utilizator (echipă)">
+              <button id="filterBtn" title="Filtrează"><span class="material-icons">filter_alt</span></button>
+              <button id="resetFilterBtn" title="Resetează filtrele"><span class="material-icons">restart_alt</span></button>
+            </div>
+          </div>
+        </aside>
+        <section class="calendar-section">
+          <div id="userProfile" class="profile-card"></div>
+          <div id="calendarGrid" class="calendar-grid"></div>
+          <div class="action-bar section-card">
+            <button id="resetBtn" title="Resetează selecțiile pentru luna curentă"><span class="material-icons">refresh</span> Resetare lună</button>
+            <button id="bulkOfficeBtn" title="Setează toate zilele ca Office"><span class="material-icons">business</span> Toate Office</button>
+            <button id="bulkHomeBtn" title="Setează toate zilele ca Home"><span class="material-icons">home</span> Toate Home</button>
+          </div>
+          <div class="section-card">
+            <button id="statsBtn"><span class="material-icons">bar_chart</span> Statistici lunare</button>
+            <div id="statsContainer"></div>
+          </div>
+        </section>
+      </main>
+      <!-- Material Icons CDN -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Firebase SDK -->
+      <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="script.js"></script>
     </div>
-
-    <div class="section-card">
-      <label>Utilizator: <input id="userInput" type="text" placeholder="Nume utilizator" /></label>
-      <button id="addUserBtn">Adaugă utilizator</button>
-      <label><input type="checkbox" id="teamView"> Vizualizare echipă</label>
-    </div>
-
-    <div class="section-card">
-      <button id="exportBtn">Export</button>
-      <button id="importBtn">Import</button>
-      <input type="file" id="importInput" style="display:none;">
-      <button id="resetBtn">Resetare lună</button>
-      <button id="bulkOfficeBtn">Toate Office</button>
-      <button id="bulkHomeBtn">Toate Home</button>
-    </div>
-
-    <div class="section-card">
-      <input type="date" id="holidayDate">
-      <input type="text" id="holidayName" placeholder="Nume sărbătoare">
-      <button id="addHolidayBtn">Adaugă sărbătoare</button>
-      <div id="customHolidaysList"></div>
-    </div>
-
-    <div class="section-card">
-      <select id="filterType">
-        <option value="">Toate tipurile</option>
-        <option value="office">Office</option>
-        <option value="home">Home</option>
-        <option value="vacation">Vacanță</option>
-      </select>
-      <input id="filterUser" type="text" placeholder="Filtru utilizator (echipă)">
-      <button id="filterBtn">Filtrează</button>
-      <button id="resetFilterBtn">Resetează</button>
-    </div>
-
-    <div class="section-card">
-      <button id="statsBtn">Statistici lunare</button>
-      <div id="statsContainer"></div>
-    </div>
-
-    <div id="userProfile"></div>
-    <div id="calendarGrid" class="calendar-grid"></div>
-    <div id="summary"></div>
-    <button id="logoutBtn">Delogare</button>
-  </div>
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAWWO3oeiIEZNf5DrYD2LvSBVV0U-aw-Oo",
-      authDomain: "office-hibrid.firebaseapp.com",
-      projectId: "office-hibrid",
-      storageBucket: "office-hibrid.appspot.com",
-      messagingSenderId: "47327667023",
-      appId: "1:47327667023:web:e56674e6c448f1c26ddb3a",
-      measurementId: "G-LDNZD6VYR9"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-  </script>
-  <script src="script.js"></script>
-</body>
+  </body>
 </html>

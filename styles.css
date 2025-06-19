@@ -8,8 +8,8 @@ body {
 }
 
 body.dark-mode {
-  background: #181c24;
-  color: #e0e6ed;
+  background: linear-gradient(120deg, #181f2a 0%, #23283a 100%) !important;
+  color: #e5e7ef;
 }
 
 /* Titlu lună + butoane */
@@ -60,8 +60,8 @@ button:hover {
 body.dark-mode .calendar-grid > div,
 body.dark-mode .day {
   background: #23283a;
-  color: #e0e6ed;
-  border: 1px solid #2d3347;
+  color: #e5e7ef;
+  border: 1.5px solid #2d3748;
 }
 
 .day {
@@ -85,29 +85,31 @@ body.dark-mode .day {
   margin-top: 5px;
   padding: 4px 6px;
   font-size: 13px;
-  border: 1px solid #ccc;
+  border: 1.5px solid #374151;
   border-radius: 6px;
   width: 100%;
+  background: #181f2a;
+  color: #e5e7ef;
 }
 
 body.dark-mode select,
 body.dark-mode input,
 body.dark-mode button {
   background: #23283a;
-  color: #e0e6ed;
+  color: #e5e7ef;
   border: 1px solid #3a405a;
   box-shadow: none;
 }
 
 body.dark-mode button {
   background: #2d3347;
-  color: #e0e6ed;
+  color: #e5e7ef;
   border: 1px solid #3a405a;
   transition: background 0.2s, color 0.2s;
 }
 
 body.dark-mode button:hover {
-  background: #3a405a;
+  background: #060709;
   color: #fff;
 }
 
@@ -129,9 +131,9 @@ body.dark-mode button:hover {
 
 body.dark-mode .day.disabled,
 body.dark-mode .day select:disabled {
-  background: #23283a;
-  color: #888;
-  border-color: #23283a;
+  background: #181f2a;
+  color: #6b7280;
+  border-color: #181f2a;
 }
 
 /* Weekend */
@@ -171,7 +173,7 @@ body.dark-mode .day.holiday-weekend {
 
 body.dark-mode #summary {
   background: #23283a;
-  color: #e0e6ed;
+  color: #e5e7ef;
   border-radius: 8px;
   padding: 12px;
   margin-top: 12px;
@@ -186,9 +188,8 @@ body.dark-mode #summary {
 }
 
 body.dark-mode .day.worked-office {
-  background: #1565c0 !important;
-  color: #e3f2fd !important;
-  border: 2px solid #42a5f5;
+  background: linear-gradient(90deg, #2563eb 60%, #1e40af 100%) !important;
+  color: #fff !important;
 }
 
 .day.free {
@@ -198,9 +199,8 @@ body.dark-mode .day.worked-office {
 }
 
 body.dark-mode .day.free {
-  background: #2e7d32 !important;
-  color: #e8f5e9 !important;
-  border: 2px solid #81c784;
+  background: linear-gradient(90deg, #16a34a 60%, #166534 100%) !important;
+  color: #fff !important;
 }
 
 .day.weekend {
@@ -221,9 +221,8 @@ body.dark-mode .day.free {
 }
 
 body.dark-mode .day.remote-work {
-  background: #ffb300 !important;
+  background: linear-gradient(90deg, #fbbf24 60%, #b45309 100%) !important;
   color: #23283a !important;
-  border: 2px solid #ffe082;
 }
 
 /* Tooltip modern pentru sărbători */
@@ -250,7 +249,7 @@ body.dark-mode .day.remote-work {
 }
 
 body.dark-mode .day.today {
-  border: 2px solid #ffb300 !important;
+  border: 2.5px solid #6366f1 !important;
   box-shadow: 0 0 0 2px #23283a;
 }
 
@@ -260,7 +259,7 @@ body.dark-mode ::-webkit-scrollbar {
   background: #23283a;
 }
 body.dark-mode ::-webkit-scrollbar-thumb {
-  background: #2d3347;
+  background: #374151;
   border-radius: 8px;
 }
 
@@ -282,7 +281,7 @@ body.dark-mode #calendarHeader {
 }
 
 body.dark-mode #calendarHeader h2 {
-  color: #e0e6ed;
+  color: #e5e7ef;
 }
 
 body.dark-mode button,
@@ -291,14 +290,14 @@ body.dark-mode input[type="text"],
 body.dark-mode input[type="number"],
 body.dark-mode input[type="date"] {
   background: #23283a;
-  color: #e0e6ed;
+  color: #e5e7ef;
   border: 1px solid #3a405a;
   box-shadow: none;
 }
 
 body.dark-mode button {
   background: #2d3347;
-  color: #e0e6ed;
+  color: #e5e7ef;
   border: 1px solid #3a405a;
   transition: background 0.2s, color 0.2s;
 }
@@ -318,44 +317,41 @@ body.dark-mode input:disabled {
 body.dark-mode .calendar-grid > div,
 body.dark-mode .day {
   background: #23283a;
-  color: #e0e6ed;
-  border: 1px solid #2d3347;
+  color: #e5e7ef;
+  border: 1.5px solid #2d3748;
 }
 
 body.dark-mode .day label,
 body.dark-mode .day select,
 body.dark-mode .day input {
-  color: #e0e6ed;
+  color: #e5e7ef;
 }
 
 body.dark-mode .day.disabled,
 body.dark-mode .day select:disabled {
-  background: #23283a;
-  color: #888;
-  border-color: #23283a;
+  background: #181f2a;
+  color: #6b7280;
+  border-color: #181f2a;
 }
 
 body.dark-mode .day.today {
-  border: 2px solid #ffb300 !important;
+  border: 2.5px solid #6366f1 !important;
   box-shadow: 0 0 0 2px #23283a;
 }
 
 body.dark-mode .day.worked-office {
-  background: #1565c0 !important;
-  color: #e3f2fd !important;
-  border: 2px solid #42a5f5;
+  background: linear-gradient(90deg, #2563eb 60%, #1e40af 100%) !important;
+  color: #fff !important;
 }
 
 body.dark-mode .day.free {
-  background: #2e7d32 !important;
-  color: #e8f5e9 !important;
-  border: 2px solid #81c784;
+  background: linear-gradient(90deg, #16a34a 60%, #166534 100%) !important;
+  color: #fff !important;
 }
 
 body.dark-mode .day.remote-work {
-  background: #ffb300 !important;
+  background: linear-gradient(90deg, #fbbf24 60%, #b45309 100%) !important;
   color: #23283a !important;
-  border: 2px solid #ffe082;
 }
 
 body.dark-mode .day.weekend {
@@ -370,79 +366,93 @@ body.dark-mode .day.holiday-weekend {
 
 body.dark-mode #summary {
   background: #23283a;
-  color: #e0e6ed;
+  color: #e5e7ef;
   border-radius: 8px;
   padding: 12px;
   margin-top: 12px;
   border: 1px solid #2d3347;
+}
+
+body.dark-mode #statsContainer,
+body.dark-mode #statsContainer * {
+  background: #23283a !important;
+  color: #e5e7ef !important;
+}
+
+body.dark-mode #statsContainer b,
+body.dark-mode #statsContainer strong {
+  color: #fff !important;
+}
+
+body.dark-mode #statsContainer ul,
+body.dark-mode #statsContainer li {
+  color: #e5e7ef !important;
+}
+
+body.dark-mode #statsContainer div,
+body.dark-mode #statsContainer canvas {
+  background: #23283a !important;
+}
+
+body.dark-mode #statsContainer .chartjs-render-monitor {
+  background: #23283a !important;
+}
+
+body.dark-mode #statsContainer .chartjs-render-monitor {
+  color-scheme: dark;
 }
 
 body.dark-mode #statsContainer {
-  background: #23283a;
-  border-radius: 8px;
-  padding: 12px;
-  margin-top: 12px;
-  border: 1px solid #2d3347;
-}
-
-body.dark-mode #userList span {
-  color: #e0e6ed;
-}
-
-body.dark-mode #customHolidaysList {
-  color: #e0e6ed;
-}
-
-/* Tooltip modern pentru sărbători în dark mode */
-body.dark-mode .day[data-tooltip]:hover::after {
-  background: #23283a;
-  color: #ffb300;
-  border: 1px solid #3a405a;
-}
-
-body.dark-mode .day span span {
-  color: #e0e6ed !important;
-}
-
-.section-card {
-  background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-  padding: 18px 20px;
-  margin-bottom: 18px;
+  box-shadow: 0 2px 8px #23283a33;
 }
 
-body.dark-mode .section-card {
-  background: #23283a;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+body.dark-mode #statsContainer {
+  border: 1.5px solid #374151;
 }
 
-.day.selected-mass {
-  outline: 2px solid #2196f3;
-  background: #e3f2fd;
+body.dark-mode #statsContainer {
+  filter: none;
 }
 
-body.dark-mode .day.selected-mass {
-  outline: 2px solid #90caf9;
-  background: #23283a;
+body.dark-mode #statsContainer > div {
+  background: #23283a !important;
+  color: #e5e7ef !important;
 }
 
-#massEditPopup {
-  position: fixed !important;
-  z-index: 9999 !important;
-  background: #fff;
-  padding: 12px 16px;
-  border-radius: 10px;
-  box-shadow: 0 4px 24px #0004;
-  min-width: 180px;
+body.dark-mode #statsContainer > div b {
+  color: #fff !important;
 }
 
-body.dark-mode #massEditPopup {
-  background: #23283a;
-  color: #e0e6ed;
+body.dark-mode #statsContainer > div span {
+  color: #fbbf24 !important;
 }
 
-#statsModal {
+body.dark-mode #statsContainer > div span[style*='color:green'] {
+  color: #22d3ee !important;
+}
+
+body.dark-mode #statsContainer > div span[style*='color:red'] {
+  color: #ef4444 !important;
+}
+
+body.dark-mode #statsContainer > div span[style*='color:#888'] {
+  color: #a3a3a3 !important;
+}
+
+body.dark-mode #statsContainer > div span[style*='color:#2196f3'] {
+  color: #60a5fa !important;
+}
+
+body.dark-mode #statsContainer > div span[style*='color:#fbc02d'] {
+  color: #fde68a !important;
+}
+
+body.dark-mode #statsContainer > div span[style*='color:#43a047'] {
+  color: #4ade80 !important;
+}
+
+body.dark-mode #statsModal {
   display: none;
   position: fixed;
   top: 50%;
@@ -477,13 +487,13 @@ body.dark-mode #massEditPopup {
 
 body.dark-mode #statsModal {
   background: #0c0e14;
-  color: #e0e6ed;
+  color: #e5e7ef;
   box-shadow: 0 4px 32px #000a;
 }
 
 body.dark-mode #statsModal button {
   background: #13151d;
-  color: #e0e6ed;
+  color: #e5e7ef;
   border: 1px solid #040404;
 }
 
@@ -492,4 +502,398 @@ body.dark-mode #statsModal h4 {
   color: #ffb300;
 }
 
-/* Removed incomplete selector to fix error */
+/* === HEADER STICKY & NAVIGATION === */
+#mainHeader {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: inherit;
+  box-shadow: 0 2px 12px #23283a22;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+#mainHeader h2 {
+  flex: 1 1 auto;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 18px;
+  letter-spacing: 0.04em;
+}
+.icon-btn, .nav-btn, .toggle-btn {
+  background: none;
+  border: none;
+  color: #6366f1;
+  font-size: 1.7rem;
+  border-radius: 50%;
+  padding: 7px;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-btn:hover, .nav-btn:hover, .toggle-btn:hover {
+  background: #6366f122;
+  color: #ffb300;
+}
+.toggle-btn.active {
+  background: #2196f3;
+  color: #fff;
+}
+
+/* === LAYOUT === */
+.main-content {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+.sidebar {
+  min-width: 220px;
+  max-width: 320px;
+  margin: 0 0 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.calendar-section {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* === CARD & ACTION BAR === */
+.section-card {
+  background: #f7f9fc;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #6366f11a;
+  padding: 18px 16px 12px 16px;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  align-items: center;
+}
+body.dark-mode .section-card {
+  background: rgba(35, 40, 58, 0.98) !important;
+  box-shadow: 0 2px 12px #23283a44;
+}
+.action-bar {
+  justify-content: center;
+  gap: 18px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  border-top: 2px solid #6366f1;
+  border-bottom: 2px solid #6366f1;
+  background: linear-gradient(90deg, #23283a 60%, #181f2a 100%) !important;
+}
+.action-bar button {
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #6366f1 60%, #3b82f6 100%);
+  color: #fff;
+  box-shadow: 0 2px 8px #6366f144;
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+}
+.action-bar button:hover {
+  background: linear-gradient(90deg, #ffb300 60%, #6366f1 100%);
+  color: #23283a;
+}
+
+/* === PROFILE CARD === */
+.profile-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #6366f11a;
+  padding: 18px 16px 12px 16px;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+body.dark-mode .profile-card {
+  background: linear-gradient(120deg, #23283a 60%, #181f2a 100%) !important;
+  color: #ffb300;
+  box-shadow: 0 2px 12px #23283a44;
+}
+
+/* === SIDEBAR === */
+.sidebar .section-card {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  padding: 18px 12px 14px 12px;
+  box-sizing: border-box;
+  min-width: 210px;
+  max-width: 320px;
+  margin: 0 auto 18px auto;
+}
+.sidebar input, .sidebar select, .sidebar button {
+  width: 100%;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #6366f1;
+  padding: 10px 12px;
+  box-sizing: border-box;
+}
+.sidebar button {
+  background: linear-gradient(90deg, #6366f1 60%, #3b82f6 100%);
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  min-height: 44px;
+  transition: background 0.2s, color 0.2s;
+}
+.sidebar button:hover {
+  background: linear-gradient(90deg, #ffb300 60%, #6366f1 100%);
+  color: #23283a;
+}
+
+/* === ICONS === */
+.material-icons {
+  display: inline-flex !important;
+  vertical-align: middle !important;
+  font-size: 22px !important;
+  color: inherit !important;
+  line-height: 1 !important;
+  font-style: normal;
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+.sidebar button .material-icons {
+  margin-right: 6px;
+}
+.sidebar button:active .material-icons,
+.sidebar button:focus .material-icons {
+  color: #fff !important;
+}
+
+/* === SIMETRIE & SPAȚIERE === */
+.sidebar {
+  min-width: 220px;
+  max-width: 320px;
+  margin: 0 0 0 8px;
+}
+
+.sidebar .icon-btn#toggleTeamViewBtn {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  color: #6366f1;
+  border: 2px solid #6366f1;
+  box-shadow: 0 2px 8px #6366f122;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px auto;
+  font-size: 30px;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  padding: 0;
+}
+.sidebar .icon-btn#toggleTeamViewBtn:hover, .sidebar .icon-btn#toggleTeamViewBtn:focus {
+  background: #6366f1;
+  color: #fff;
+  border: 2px solid #ffb300;
+}
+.sidebar .icon-btn#toggleTeamViewBtn .material-icons {
+  font-size: 30px !important;
+  color: inherit !important;
+  margin: 0;
+}
+.sidebar .icon-btn#toggleTeamViewBtn[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #23283a;
+  color: #ffb300;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  white-space: nowrap;
+  z-index: 1000;
+  box-shadow: 0 2px 8px #23283a44;
+  pointer-events: none;
+}
+@media (max-width: 700px) {
+  .sidebar .icon-btn#toggleTeamViewBtn {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
+    font-size: 22px;
+  }
+  .sidebar .icon-btn#toggleTeamViewBtn .material-icons {
+    font-size: 22px !important;
+  }
+}
+
+#calendarGrid .selected-mass {
+  outline: 3px solid #6366f1 !important;
+  box-shadow: 0 0 0 4px #6366f133, 0 2px 8px #6366f11a !important;
+  background: linear-gradient(90deg, #6366f1 10%, #3b82f6 90%) !important;
+  color: #fff !important;
+  z-index: 10;
+  transition: outline 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+#calendarGrid .day.selected-mass select {
+  background: #23283a !important;
+  color: #fff !important;
+  border: 1.5px solid #6366f1 !important;
+  font-weight: bold;
+}
+
+#calendarGrid .day.selected-mass label,
+#calendarGrid .day.selected-mass div {
+  color: #fff !important;
+}
+
+#massEditPopup {
+  z-index: 10000 !important;
+  border: 2px solid #6366f1;
+  box-shadow: 0 4px 24px #6366f144;
+  background: #fff;
+  color: #23283a;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 1.08rem;
+  font-weight: 500;
+  min-width: 180px;
+  text-align: center;
+}
+
+#massEditPopup button {
+  margin: 6px 4px 0 4px;
+  padding: 7px 16px;
+  border-radius: 7px;
+  background: linear-gradient(90deg, #6366f1 60%, #3b82f6 100%);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#massEditPopup button:hover {
+  background: linear-gradient(90deg, #4f46e5 60%, #2563eb 100%);
+}
+
+body.dark-mode #calendarGrid .day {
+  background: #23283a !important;
+  color: #e5e7ef !important;
+  border: 1.5px solid #2d3748 !important;
+  transition: background 0.18s, border 0.18s, color 0.18s;
+}
+body.dark-mode #calendarGrid .day.disabled {
+  background: #181f2a !important;
+  color: #6b7280 !important;
+  border: 1.5px solid #23283a !important;
+}
+body.dark-mode #calendarGrid .day.today {
+  border: 2.5px solid #6366f1 !important;
+  background: linear-gradient(90deg, #23283a 60%, #6366f1 100%) !important;
+}
+body.dark-mode #calendarGrid .worked-office {
+  background: linear-gradient(90deg, #2563eb 60%, #1e40af 100%) !important;
+  color: #fff !important;
+  border: 2px solid #2563eb !important;
+}
+body.dark-mode #calendarGrid .free {
+  background: linear-gradient(90deg, #16a34a 60%, #166534 100%) !important;
+  color: #fff !important;
+  border: 2px solid #16a34a !important;
+}
+body.dark-mode #calendarGrid .remote-work {
+  background: linear-gradient(90deg, #fbbf24 60%, #b45309 100%) !important;
+  color: #23283a !important;
+  border: 2px solid #fbbf24 !important;
+}
+body.dark-mode #calendarGrid .day .teamDiv span {
+  background: linear-gradient(90deg, #6366f1 60%, #3b82f6 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 8px #6366f144;
+  border: 2px solid #23283a;
+  font-weight: 700;
+  transition: background 0.18s, color 0.18s;
+}
+body.dark-mode #calendarGrid .day .teamDiv span:hover {
+  background: linear-gradient(90deg, #4f46e5 60%, #2563eb 100%) !important;
+  color: #fde68a !important;
+}
+body.dark-mode #teamLegend {
+  background: #181f2a !important;
+  color: #e5e7ef !important;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #23283a33;
+  padding: 10px 0 6px 0;
+  margin-bottom: 10px;
+}
+body.dark-mode #teamLegend span {
+  background: none !important;
+  color: #e5e7ef !important;
+}
+body.dark-mode #calendarGrid .day .teamDiv {
+  background: none !important;
+  border: none !important;
+  gap: 6px;
+}
+body.dark-mode #calendarGrid .day .teamDiv span {
+  border-radius: 50%;
+  border: 2px solid #6366f1;
+  background: linear-gradient(90deg, #6366f1 60%, #3b82f6 100%) !important;
+  color: #fff !important;
+}
+body.dark-mode #calendarGrid .day .teamDiv span[title] {
+  cursor: pointer;
+}
+body.dark-mode #calendarGrid .day .teamDiv span[title]:hover {
+  background: linear-gradient(90deg, #4f46e5 60%, #2563eb 100%) !important;
+  color: #fde68a !important;
+  border-color: #fde68a;
+}
+
+.sidebar-section {
+  margin-bottom: 18px;
+}
+.sidebar-title {
+  font-size: 1.13rem;
+  font-weight: 700;
+  color: #6366f1;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+body.dark-mode .sidebar-title {
+  color: #ffb300;
+}

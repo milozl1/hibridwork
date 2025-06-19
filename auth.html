@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <title>Autentificare Calendar Office</title>
+  <link rel="stylesheet" href="styles-auth.css">
+</head>
+<body class="auth-bg">
+  <div class="auth-container">
+    <h2 id="auth-title">Autentificare</h2>
+    <form id="loginForm">
+      <input type="text" id="loginUser" placeholder="Username" required>
+      <input type="password" id="loginPass" placeholder="Parolă" required>
+      <button type="submit">Login</button>
+      <div id="authError" class="auth-error"></div>
+      <div id="login-switch" class="auth-switch">
+        Nu ai cont? <a href="#" id="showRegister">Înregistrează-te</a>
+      </div>
+    </form>
+    <form id="registerForm" style="display:none;">
+      <input type="text" id="regName" placeholder="Nume" required>
+      <input type="text" id="regSurname" placeholder="Prenume" required>
+      <input type="text" id="regUser" placeholder="Username (unic)" required>
+      <input type="password" id="regPass" placeholder="Parolă" required>
+      <button type="submit">Înregistrează-te</button>
+      <div id="regError" class="auth-error"></div>
+      <div id="register-switch" class="auth-switch">
+        Ai deja cont? <a href="#" id="showLogin">Login</a>
+      </div>
+    </form>
+  </div>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAWWO3oeiIEZNf5DrYD2LvSBVV0U-aw-Oo",
+      authDomain: "office-hibrid.firebaseapp.com",
+      projectId: "office-hibrid",
+      storageBucket: "office-hibrid.appspot.com",
+      messagingSenderId: "47327667023",
+      appId: "1:47327667023:web:e56674e6c448f1c26ddb3a",
+      measurementId: "G-LDNZD6VYR9"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+  <script src="auth.js"></script>
+</body>
+</html>

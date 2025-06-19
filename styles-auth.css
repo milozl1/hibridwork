@@ -1,0 +1,117 @@
+/* styles-auth.css - Stilizare premium pentru pagina de autentificare/înregistrare */
+body.auth-bg {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #e0e7ff 0%, #f8fafc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+.auth-container {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px #0002, 0 1.5px 6px #3b82f633;
+  padding: 38px 32px 28px 32px;
+  max-width: 370px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.auth-container h2 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #1e293b;
+  margin-bottom: 22px;
+}
+.auth-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+}
+.auth-container form input,
+.auth-container form button[type="submit"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+.auth-container input[type="email"],
+.auth-container input[type="password"],
+.auth-container input[type="text"] {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #cbd5e1;
+  font-size: 1.08rem;
+  background: #f1f5f9;
+  transition: border 0.2s;
+}
+.auth-container input:focus {
+  border: 1.5px solid #6366f1;
+  outline: none;
+  background: #fff;
+}
+.auth-container button[type="submit"] {
+  background: linear-gradient(90deg, #6366f1 60%, #3b82f6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 6px;
+  width: 100%;
+  box-shadow: 0 2px 8px #6366f11a;
+  transition: background 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  text-align: center;
+}
+.auth-container button[type="submit"]:hover {
+  background: linear-gradient(90deg, #4f46e5 60%, #2563eb 100%);
+  box-shadow: 0 4px 16px #6366f122;
+}
+.auth-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+.auth-switch a {
+  color: #6366f1;
+  background: none;
+  padding: 0 6px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.auth-switch a:hover {
+  color: #2563eb;
+  background: #e0e7ff;
+}
+.auth-error {
+  color: #ef4444;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-top: 10px;
+  font-size: 0.98rem;
+  display: none;
+  width: 100%;
+  text-align: center;
+}
+@media (max-width: 500px) {
+  .auth-container {
+    padding: 18px 6vw 18px 6vw;
+    max-width: 98vw;
+  }
+  .auth-container h2 {
+    font-size: 1.4rem;
+  }
+}
