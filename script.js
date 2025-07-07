@@ -1053,7 +1053,8 @@ function renderUserProfile(selections) {
     }
   }
   const zileRamaseHome = Math.max(0, maxHomeDays - stats.home);
-  const zileObligatoriiOffice = Math.max(0, zileLucratoare - maxHomeDays);
+  // Zilele de vacanță nu trebuie să fie considerate ca zile obligatorii la birou
+  const zileObligatoriiOffice = Math.max(0, zileLucratoare - maxHomeDays - stats.vacation);
   const zileRamaseBirou = Math.max(0, zileObligatoriiOffice - stats.office);
   const total = stats.office + stats.home + stats.vacation;
   const displayName = userNameMap[user] || (user.charAt(0).toUpperCase() + user.slice(1));
