@@ -394,9 +394,13 @@ function generateCalendar(date) {
         cell.appendChild(label);
         if (teamView.checked) {
           // --- TEAM VIEW: doar buline și badge ---
-          const usersAtOffice = [];
-          for (const [u, sel] of Object.entries(filteredSelections)) {
-            if (sel && sel[d - 1] === "office") usersAtOffice.push(u);
+          // Exclude zilele de sărbătoare legală sau personalizată din prezență birou
+          const holiday = holidaysRO[dateString] || customHolidays[dateString];
+          let usersAtOffice = [];
+          if (!holiday) {
+            for (const [u, sel] of Object.entries(filteredSelections)) {
+              if (sel && sel[d - 1] === "office") usersAtOffice.push(u);
+            }
           }
           if (usersAtOffice.length > 0) {
             const badge = document.createElement("span");
@@ -668,7 +672,7 @@ const translations = {
     // Dynamic/statistics
     colleagues: "colegi",
     personalSummary: "Rezumat personal:",
-    daysOffice: "Zile Office",
+    daysOffice: "Zile Office + Sărbători",
     daysHome: "Zile Home",
     daysVacation: "Zile Vacanță",
     daysWork: "Zile lucrătoare în lună",
