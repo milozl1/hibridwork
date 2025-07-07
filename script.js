@@ -666,6 +666,7 @@ const translations = {
     totalSelected: "Total selectate:",
     weekdaysShort: ["Lun", "Mar", "Mie", "Joi", "Vin", "Sam", "Dum"],
     // Dynamic/statistics
+    colleagues: "colegi",
     personalSummary: "Rezumat personal:",
     daysOffice: "Zile Office",
     daysHome: "Zile Home",
@@ -720,6 +721,7 @@ const translations = {
     totalSelected: "Total selected:",
     weekdaysShort: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     // Dynamic/statistics
+    colleagues: "colleagues",
     personalSummary: "Personal summary:",
     daysOffice: "Office days",
     daysHome: "Home days",
@@ -1048,6 +1050,7 @@ function renderUserProfile(selections) {
   }
   const zileRamaseHome = Math.max(0, maxHomeDays - stats.home);
   const zileObligatoriiOffice = Math.max(0, zileLucratoare - maxHomeDays);
+  const zileRamaseBirou = Math.max(0, zileObligatoriiOffice - stats.office);
   const total = stats.office + stats.home + stats.vacation;
   const displayName = userNameMap[user] || (user.charAt(0).toUpperCase() + user.slice(1));
   const initials = displayName.split(' ').map(s => s[0]).join('').toUpperCase();
@@ -1065,7 +1068,8 @@ function renderUserProfile(selections) {
         <div style="font-size:13px;color:#888;">${translations[currentLang].totalSelected} <b>${total}</b></div>
         <div style="font-size:13px;color:#2196f3;">${translations[currentLang].daysWork}: <b>${zileLucratoare}</b></div>
         <div style="font-size:13px;color:#fbc02d;">${translations[currentLang].daysHomeLeft}: <b>${zileRamaseHome}</b> ${translations[currentLang].daysHomeOf} ${maxHomeDays}</div>
-        <div style="font-size:13px;color:#43a047;">${translations[currentLang].daysOfficeRequired}: <b>${Math.max(0, zileLucratoare - maxHomeDays)}</b></div>
+        <div style="font-size:13px;color:#43a047;">${translations[currentLang].daysOfficeRequired}: <b>${zileObligatoriiOffice}</b></div>
+        <div style="font-size:13px;color:#e57373;">Zile rămase de birou: <b>${zileRamaseBirou}</b></div>
       </div>
     </div>
   `;
