@@ -2,32 +2,80 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <title>Autentificare Calendar Office</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Autentificare · Hybrid Office Planner</title>
   <link rel="stylesheet" href="styles-auth.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400;600&display=swap" rel="stylesheet">
+  <script src="translations.js"></script>
 </head>
 <body class="auth-bg">
   <div class="auth-container">
-    <h2 id="auth-title">Autentificare</h2>
-    <form id="loginForm">
-      <input type="text" id="loginUser" placeholder="Username" required>
-      <input type="password" id="loginPass" placeholder="Parolă" required>
-      <button type="submit">Login</button>
+    <div class="auth-top">
+      <button id="authHelpBtn" class="help-btn" title="Ghid de utilizare">
+        <span class="material-icons" aria-hidden="true">help_outline</span>
+        <span class="btn-label">Ghid de utilizare</span>
+      </button>
+    </div>
+    <div class="auth-header">
+      <h2 id="auth-title">Autentificare</h2>
+      <div class="auth-actions">
+        <button id="authLangBtn" class="lang-btn" title="EN/RO">RO</button>
+      </div>
+    </div>
+    <form id="loginForm" autocomplete="on">
+      <input type="text" id="loginUser" placeholder="Username" required aria-label="Username" autocomplete="username">
+      <div class="password-field">
+        <input type="password" id="loginPass" placeholder="Parolă" required aria-label="Parolă" autocomplete="current-password">
+        <button type="button" id="showPassBtn" class="auth-inline-btn icon-only" aria-pressed="false" aria-label="Arată parola">
+          <span class="material-symbols-outlined" aria-hidden="true">visibility</span>
+          <span class="sr-only">Arată parola</span>
+        </button>
+      </div>
+      <label id="rememberLabel" class="auth-toggle-row">
+        <input type="checkbox" id="rememberUser" class="switch-input" role="switch" aria-checked="false">
+        <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+        <span class="switch-text">Ține minte utilizatorul</span>
+      </label>
+      <button type="submit" id="loginSubmit">Login</button>
       <div id="authError" class="auth-error"></div>
       <div id="login-switch" class="auth-switch">
         Nu ai cont? <a href="#" id="showRegister">Înregistrează-te</a>
       </div>
     </form>
-    <form id="registerForm" style="display:none;">
-      <input type="text" id="regName" placeholder="Nume" required>
-      <input type="text" id="regSurname" placeholder="Prenume" required>
-      <input type="text" id="regUser" placeholder="Username (unic)" required>
-      <input type="password" id="regPass" placeholder="Parolă" required>
-      <button type="submit">Înregistrează-te</button>
+    <form id="registerForm" autocomplete="off" style="display:none;">
+      <input type="text" id="regName" placeholder="Nume" required aria-label="Nume">
+      <input type="text" id="regSurname" placeholder="Prenume" required aria-label="Prenume">
+      <input type="text" id="regUser" placeholder="Username (unic)" required aria-label="Username (unic)" autocomplete="off">
+      <div class="password-field">
+        <input type="password" id="regPass" placeholder="Parolă" required aria-label="Parolă" autocomplete="new-password">
+        <button type="button" id="showRegPassBtn" class="auth-inline-btn icon-only" aria-pressed="false" aria-label="Arată parola">
+          <span class="material-symbols-outlined" aria-hidden="true">visibility</span>
+          <span class="sr-only">Arată parola</span>
+        </button>
+      </div>
+      <button type="submit" id="registerSubmit">Înregistrează-te</button>
       <div id="regError" class="auth-error"></div>
       <div id="register-switch" class="auth-switch">
         Ai deja cont? <a href="#" id="showLogin">Login</a>
       </div>
     </form>
+  </div>
+  <!-- Auth Help Modal -->
+  <div id="authHelpModal" class="auth-modal hidden" aria-hidden="true">
+    <div class="auth-modal__backdrop" data-close="true"></div>
+    <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-labelledby="authHelpTitle">
+      <div class="auth-modal__header">
+        <h3 id="authHelpTitle">Ghid de utilizare</h3>
+        <button id="authHelpClose" class="icon-btn" title="Închide">
+          <span class="material-symbols-outlined" aria-hidden="true">close</span>
+          <span class="sr-only">Închide</span>
+        </button>
+      </div>
+      <div id="authHelpContent" class="auth-modal__content"></div>
+    </div>
   </div>
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -44,6 +92,8 @@
     };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
+    // Apply stored theme
+    try { if(localStorage.getItem('calendar-dark-mode')==='true') document.body.classList.add('dark-mode'); } catch(_){}
   </script>
   <script src="auth.js"></script>
 </body>

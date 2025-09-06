@@ -3,44 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <title>Calendar Office Hibrid</title>
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAABhv6PzAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA21BMVEUAAAA/Pz9NTU1DQ0NPT0+AgIBgYGB7e3uSkpKioqK+vr7p6enc3Ny+vr7GxsbT09Pj4+P5+fnPz8/Y2Njg4OC/v7/ExMSsrKzX19fFxcW/v7+jo6PZ2dnl5eXQ0NDIyMjh4eHc3Ny5ubm1tbW/v7/Dw8PIyMjn5+fX19ff3994eHjAwMDU1NTV1dXq6uqrq6u+vr7Q0NDe3t7W1tbp6ens7OzU1NRFRUWoqKimpqaUlJTs7Oz///9yNqfJAAAAKXRSTlMAECAv0Nv3+vr59vTu6+fd1trPwry2rZ2Pg3ptZFJMREA3Jx8VBw4K+fl3YFwAAABYSURBVHicBcEJFoJQFADQGztnZpKZ2f//syQFZZW6X+gQ8D3nCkX1mA1mO3pWhwshkDkrt8Q3PbQOHImUJPVb8r/Bon5FCw4TjQkoOJxg7OgUguvxdc8u3d9P4AM8UQXUfHTa7AAAAAElFTkSuQmCC" />
+  <!-- Phase 1: Design tokens -->
+  <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
       <header id="mainHeader">
         <div class="header-row">
-          <button id="toggleThemeBtn" class="icon-btn" title="Comută temă întunecată"><span class="material-icons">dark_mode</span></button>
-          <button id="prevBtn" class="nav-btn" title="Luna anterioară"><span class="material-icons">chevron_left</span></button>
-          <h2 id="monthTitle"></h2>
-          <button id="nextBtn" class="nav-btn" title="Luna următoare"><span class="material-icons">chevron_right</span></button>
-          <button id="langBtn" class="icon-btn" title="Change language" style="margin-left:12px;"></button>
+          <div class="header-left">
+            <button id="toggleThemeBtn" class="icon-btn" title="Comută temă întunecată"><span class="material-icons">dark_mode</span></button>
+          </div>
+          <div class="header-center">
+            <button id="prevBtn" class="nav-btn" title="Luna anterioară"><span class="material-icons">chevron_left</span></button>
+            <h2 id="monthTitle"></h2>
+            <button id="nextBtn" class="nav-btn" title="Luna următoare"><span class="material-icons">chevron_right</span></button>
+          </div>
+          <div class="header-right">
+            <button id="langBtn" class="icon-btn" title="Change language"></button>
+            <button id="settingsBtn" class="icon-btn" title="Setări" aria-label="Setări"><span class="material-icons">settings</span></button>
+          </div>
         </div>
       </header>
       <main class="main-content">
         <aside class="sidebar">
           <div class="sidebar-section">
-            <h3 class="sidebar-title">Vizualizare</h3>
+            <div class="section-title-row">
+              <h3 class="sidebar-title">Vizualizare</h3>
+              <button id="collapseSidebarBtn" class="icon-btn section-toggle" title="Restrânge bara laterală" aria-expanded="true"><span class="material-icons">chevron_left</span></button>
+            </div>
             <button id="toggleTeamViewBtn" class="icon-btn" title="Comută vizualizare echipă/personală" aria-label="Comută vizualizare echipă/personală" style="margin-bottom:18px;"><span class="material-icons" id="teamViewIcon">groups</span></button>
           </div>
           <div class="sidebar-section">
-            <h3 class="sidebar-title">Sărbători personalizate</h3>
-            <div class="section-card">
+            <div class="section-title-row">
+              <h3 class="sidebar-title">Sărbători personalizate</h3>
+            </div>
+            <div class="section-card" id="customHolidaysCard">
               <input type="date" id="holidayDate">
               <input type="text" id="holidayName" placeholder="Nume sărbătoare">
               <button id="addHolidayBtn" title="Adaugă sărbătoare"><span class="material-icons">add</span></button>
+              <button id="clearHolidaysBtn" class="icon-btn" title="Șterge toate sărbătorile"><span class="material-icons">delete_sweep</span></button>
               <div id="customHolidaysList"></div>
             </div>
           </div>
           <div class="sidebar-section">
-            <h3 class="sidebar-title">Filtrare calendar</h3>
-            <div class="section-card">
+            <div class="section-title-row">
+              <h3 class="sidebar-title">Filtrare calendar</h3>
+            </div>
+            <div class="section-card" id="filterCard">
               <select id="filterType">
                 <option value="">Toate tipurile</option>
                 <option value="office">Office</option>
                 <option value="home">Home</option>
                 <option value="vacation">Vacanță</option>
               </select>
-              <input id="filterUser" type="text" placeholder="Filtru utilizator (echipă)">
+              <input id="filterUser" type="text" placeholder="Filtru utilizator (echipă)" list="userListOptions">
+              <datalist id="userListOptions"></datalist>
               <button id="filterBtn" title="Filtrează"><span class="material-icons">filter_alt</span></button>
               <button id="resetFilterBtn" title="Resetează filtrele"><span class="material-icons">restart_alt</span></button>
             </div>
@@ -48,11 +67,52 @@
         </aside>
         <section class="calendar-section">
           <div id="userProfile" class="profile-card"></div>
-          <div id="calendarGrid" class="calendar-grid"></div>
-          <div class="action-bar section-card">
-            <button id="resetBtn" title="Resetează selecțiile pentru luna curentă"><span class="material-icons">refresh</span> Resetare lună</button>
-            <button id="bulkOfficeBtn" title="Setează toate zilele ca Office"><span class="material-icons">business</span> Toate Office</button>
-            <button id="bulkHomeBtn" title="Setează toate zilele ca Home"><span class="material-icons">home</span> Toate Home</button>
+          <div class="action-bar section-card ab-premium" role="toolbar" aria-label="Acțiuni calendar">
+            <div class="ab-group ab-left">
+              <button id="resetBtn" title="Resetează selecțiile pentru luna curentă">
+                <span class="material-icons">refresh</span>
+                <span class="btn-label">Resetare lună</span>
+              </button>
+              <button id="bulkOfficeBtn" title="Setează toate zilele ca Office">
+                <span class="material-icons">business</span>
+                <span class="btn-label">Toate Office</span>
+              </button>
+              <button id="bulkHomeBtn" title="Setează toate zilele ca Home">
+                <span class="material-icons">home</span>
+                <span class="btn-label">Toate Home</span>
+              </button>
+            </div>
+            <span class="ab-divider" aria-hidden="true"></span>
+            <div class="ab-group ab-right">
+              <button id="massModeToggleBtn" title="Selectare multiplă (inactive)">
+                <span class="material-icons">select_all</span>
+                <span class="btn-label">Multi-select</span>
+              </button>
+              <button id="keyboardHelpBtn" class="icon-btn ab-ghost" title="Ajutor tastatură" aria-haspopup="dialog" aria-controls="keyboardHelpPopover"><span class="material-icons">help_outline</span></button>
+              <button id="exportCsvBtn" title="Exportă CSV" class="icon-btn ab-ghost"><span class="material-icons">table_view</span></button>
+              <button id="exportIcsBtn" title="Exportă iCalendar (.ics)" class="icon-btn ab-ghost"><span class="material-icons">event</span></button>
+              <button id="manualSaveBtn" title="Salvează acum" style="display:none;">
+                <span class="material-icons">save</span>
+                <span class="btn-label">Save</span>
+              </button>
+            </div>
+          </div>
+          <div id="calendarGrid" class="calendar-grid" role="grid" aria-label="Calendar hibrid"></div>
+          <div id="selectionModeHint" class="selection-mode-hint"></div>
+          <div id="autosaveStatus" class="autosave-status" aria-live="polite"></div>
+          <button id="retrySaveBtn" class="retry-btn" style="display:none;margin:4px 6px 0 6px;align-self:flex-start;">
+            <span class="material-icons" style="font-size:16px;">refresh</span>
+          </button>
+          <div id="calendarLive" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+          <!-- Help / User Guide Modal -->
+          <div id="helpModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+            <div class="modal-content help-content">
+              <div class="modal-header">
+                <h3 id="helpTitle">Ghid de utilizare</h3>
+                <button id="closeHelpBtn" class="icon-btn" aria-label="Închide"><span class="material-icons">close</span></button>
+              </div>
+              <div class="modal-body" id="helpBody"></div>
+            </div>
           </div>
           <div class="section-card">
             <button id="statsBtn"><span class="material-icons">bar_chart</span> Statistici lunare</button>
@@ -60,12 +120,62 @@
           </div>
         </section>
       </main>
+  <!-- Professional Footer -->
+  <footer id="pageFooter" class="site-footer" role="contentinfo" aria-label="Footer"></footer>
+      <!-- Settings Modal -->
+      <div id="settingsModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 id="settingsTitle">Setări</h3>
+            <button id="closeSettingsBtn" class="icon-btn" aria-label="Închide"><span class="material-icons">close</span></button>
+          </div>
+          <div class="modal-body">
+            <label for="maxHomeDaysInput" id="labelMaxHomeDays">Zile maxime Home Office / lună</label>
+            <input type="number" id="maxHomeDaysInput" min="0" step="1" />
+            <label for="maxSeatsInput" id="labelMaxSeats">Locuri maxime (capacitate echipă)</label>
+            <input type="number" id="maxSeatsInput" min="1" step="1" />
+            <label for="localeDateFormatSelect" id="labelDateFormat">Format dată</label>
+            <select id="localeDateFormatSelect">
+              <option value="yyyy-mm-dd">YYYY-MM-DD</option>
+              <option value="dd.mm.yyyy">DD.MM.YYYY</option>
+              <option value="mm/dd/yyyy">MM/DD/YYYY</option>
+            </select>
+            <label for="selectionModeSelect" id="labelSelectionMode">Mod selectare zi</label>
+            <select id="selectionModeSelect">
+              <option value="cycle">Click ciclic</option>
+              <option value="dropdown">Dropdown</option>
+            </select>
+            <label id="labelAutoSave"><input type="checkbox" id="autoSaveToggle" checked /> Salvare automată (debounce)</label>
+            <label id="labelShowOfficeReq"><input type="checkbox" id="showOfficeReqToggle" checked /> Necesar office ajustat vizibil</label>
+            <label id="labelAdaptiveDebounce"><input type="checkbox" id="adaptiveDebounceToggle" checked /> Debounce adaptiv</label>
+            <label for="baseDebounceInput" id="labelBaseDebounce">Debounce bază (ms)</label>
+            <input type="number" id="baseDebounceInput" min="50" step="50" />
+            <label for="minDebounceInput" id="labelMinDebounce">Debounce min (ms)</label>
+            <input type="number" id="minDebounceInput" min="50" step="50" />
+            <label for="maxDebounceInput" id="labelMaxDebounce">Debounce max (ms)</label>
+            <input type="number" id="maxDebounceInput" min="100" step="50" />
+          </div>
+          <div class="modal-footer">
+            <button id="saveSettingsBtn">Salvează</button>
+          </div>
+        </div>
+      </div>
+      <!-- Loading Overlay -->
+      <div id="loadingOverlay" class="loading-overlay hidden" aria-hidden="true">
+        <div class="spinner"></div>
+      </div>
       <!-- Material Icons CDN -->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!-- Firebase SDK -->
       <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
       <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Chart.js lazy loaded on demand in stats (removed eager script) -->
+      <script src="translations.js"></script>
+      <script src="persistence.js"></script>
+      <script src="stats.js"></script>
+  <script src="calendarStore.js"></script>
+  <script src="dataService.js"></script>
+  <script src="diffEngine.js"></script>
       <script src="script.js"></script>
     </div>
   </body>
